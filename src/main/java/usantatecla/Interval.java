@@ -6,21 +6,22 @@ public class Interval {
 	private Max max;
 
 	public Interval(Min min, Max max) {
-		assert min.value <= max.value;
+		assert min.getValue() <= max.getValue();
 		this.min = min;
 		this.max = max;
 	}
 
 	public boolean include(double value) {
-			return this.min.isWithin(value) && this.max.isWithin(value);
+		return this.min.isWithin(value) && this.max.isWithin(value);
 	}
 
-	public boolean intersects(Interval second) {
-		if(this.max.value > second.min.value) {
-			return true;
-		}
-        return false;
-    }
+	public boolean intersects(Interval interval) {
+		return this.max.getValue() > interval.getMinValue();
+	}
+
+	private double getMinValue() {
+		return this.min.getValue();
+	}
 
 	@Override
 	public int hashCode() {
@@ -56,6 +57,6 @@ public class Interval {
 	@Override
 	public String toString() {
 		return this.min.toString() + ", " + max.toString();
-	}	
+	}
 
 }
