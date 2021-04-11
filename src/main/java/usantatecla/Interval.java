@@ -16,7 +16,7 @@ public class Interval {
 	}
 
 	public boolean intersects(Interval second) {
-        return true;
+        return false;
     }
 
 	@Override
