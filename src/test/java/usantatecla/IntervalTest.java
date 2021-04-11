@@ -90,8 +90,10 @@ public class IntervalTest {
 
   @Test
   public void givenIntervalsCloseCloseWhenIntersectsThenFalse() {
-    Interval first = new IntervalBuilder().closed(left.getEquals()).closed(left.getGreater()).build();
+    Interval first = new IntervalBuilder().closed(left.getGreater()).closed(right.getLess()).build();
     Interval second = new IntervalBuilder().closed(right.getEquals()).closed(right.getGreater()).build();
+    assertFalse(first.intersects(second));
+    second = new IntervalBuilder().closed(left.getLess()).closed(left.getEquals()).build();
     assertFalse(first.intersects(second));
   }
 
