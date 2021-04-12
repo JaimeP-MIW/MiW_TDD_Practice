@@ -16,15 +16,19 @@ public class Interval {
 	}
 
 	public boolean intersects(Interval interval) {
-		return this.max.isWithin(interval.getMinValue()) && interval.min.isWithin(this.max.getValue()) &&
-				this.min.isWithin(interval.getMaxValue());
+		return this.max.isWithin(interval.getMinValue()) && interval.getMin().isWithin(this.max.getValue())
+				&& this.min.isWithin(interval.getMaxValue());
 	}
 
-	private double getMinValue() {
+	public Min getMin() {
+		return this.min;
+	}
+
+	public double getMinValue() {
 		return this.min.getValue();
 	}
 
-	private double getMaxValue() {
+	public double getMaxValue() {
 		return this.max.getValue();
 	}
 
